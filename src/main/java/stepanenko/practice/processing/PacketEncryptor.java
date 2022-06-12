@@ -1,24 +1,25 @@
-package stepanenko.practice.model;
+package stepanenko.practice.processing;
 
-import java.nio.ByteBuffer;
+import stepanenko.practice.cipher.CipherService;
+import stepanenko.practice.model.Message;
+import stepanenko.practice.model.Packet;
 
+/**
+ * @author Liubomyr Stepanenko
+ */
 public class PacketEncryptor {
-    private static final byte bMagic = 0x13;
-    private static final int REST_BYTES_QUANTITY = 18, HEADER_LENGTH = 13, FOOTER_OFFSET = 16;
-    private byte bSrc;
-    private long bPktId;
-    private int wLen;
-    private short wCrc16_start, wCrc16_end;
-    private Message bMsg;
+    private Packet packet;
+    private CipherService cipherService;
 
-    public PacketEncryptor(byte bSrc, long bPtkId, int wlen, ) {
-        ByteBuffer.allocate(message.getMessage().length + REST_BYTES_QUANTITY)
-                .put(bMagic)
-                .put();
-        encryptMessage(message);
+    public PacketEncryptor(Packet packet, CipherService cipherService) {
+        if (packet == null || cipherService == null) {
+            throw new IllegalArgumentException("Some argument is null");
+        }
+        this.packet = packet;
+        this.cipherService = cipherService;
     }
 
-    private void encryptMessage(Message message) {
-
+    private byte[] encryptedMessage() {
+        return cipherService.encrypt(packet.getbMsg().getMessage());
     }
 }

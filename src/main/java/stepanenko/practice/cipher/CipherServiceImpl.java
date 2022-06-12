@@ -3,11 +3,10 @@ package stepanenko.practice.cipher;
 import javax.crypto.Cipher;
 import stepanenko.practice.util.KeyUtil;
 
+/**
+ * @author Liubomyr Stepanenko
+ */
 public class CipherServiceImpl implements CipherService {
-
-    public CipherServiceImpl() {
-    }
-
     @Override
     public byte[] encrypt(byte[] bytes) {
         try {
