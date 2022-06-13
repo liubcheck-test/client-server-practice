@@ -3,8 +3,8 @@ package stepanenko.practice.exception;
 /**
  * @author Liubomyr Stepanenko
  */
-public class PacketException extends RuntimeException {
-    public PacketException(String message) {
+public class MagicByteException extends RuntimeException {
+    public MagicByteException(String message) {
         super(message);
     }
 }

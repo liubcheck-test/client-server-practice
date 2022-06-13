@@ -1,25 +1,21 @@
 package stepanenko.practice.util;
 
-import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
-import java.util.Random;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  * @author Liubomyr Stepanenko
  */
 public class KeyUtil {
-    public static final String CIPHER_TRANSFORMATION = "AES";
-    private static final int KEY_SIZE = 128;
-    private static final Key key = initRandomKey();
+    public static final String SECRET_KEY = "&mjlt2ls!sLVas.?";
+    public static final Key key = initKey();
 
     public static Key getKey() {
         return key;
     }
 
-    private static Key initRandomKey() {
-        byte[] randomKeyBytes = new byte[KEY_SIZE / 8];
-        Random random = new Random();
-        random.nextBytes(randomKeyBytes);
-        return new SecretKeySpec(randomKeyBytes, CIPHER_TRANSFORMATION);
+    private static Key initKey() {
+        return new SecretKeySpec(SECRET_KEY.getBytes(StandardCharsets.UTF_8), "AES");
     }
 }

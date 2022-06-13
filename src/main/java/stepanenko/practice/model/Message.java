@@ -1,6 +1,5 @@
 package stepanenko.practice.model;
 
-import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -12,20 +11,10 @@ public class Message {
     private int bUserId;
     private byte[] message;
 
-    public Message() {
-    }
-
     public Message(int cType, int bUserId, byte[] message) {
         this.cType = cType;
         this.bUserId = bUserId;
         this.message = message;
-    }
-
-    public Message(ByteBuffer byteBuffer, int wLen) {
-        this.cType = byteBuffer.getInt();
-        this.bUserId = byteBuffer.getInt();
-        this.message = new byte[wLen - Integer.BYTES * 2];
-        byteBuffer.get(this.message, Integer.BYTES * 2, wLen);
     }
 
     public int getCType() {
@@ -57,7 +46,8 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message1 = (Message) o;
-        return cType == message1.cType && bUserId == message1.bUserId && Arrays.equals(message, message1.message);
+        return cType == message1.cType && bUserId == message1.bUserId
+                && Arrays.equals(message, message1.message);
     }
 
     @Override
