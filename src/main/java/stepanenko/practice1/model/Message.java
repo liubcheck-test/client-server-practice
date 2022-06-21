@@ -1,4 +1,4 @@
-package stepanenko.practice.model;
+package stepanenko.practice1.model;
 
 import java.util.Arrays;
 import java.util.Objects;

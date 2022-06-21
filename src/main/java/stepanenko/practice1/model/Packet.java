@@ -1,12 +1,13 @@
-package stepanenko.practice.model;
+package stepanenko.practice1.model;
 
 import java.nio.ByteBuffer;
 import java.util.Objects;
-import stepanenko.practice.exception.MagicByteException;
-import stepanenko.practice.exception.CRC16Exception;
-import stepanenko.practice.processing.Encryptor;
-import stepanenko.practice.util.CRC16Util;
-import stepanenko.practice.util.CipherUtil;
+
+import stepanenko.practice1.exception.CRC16Exception;
+import stepanenko.practice1.exception.MagicByteException;
+import stepanenko.practice1.processing.Encryptor;
+import stepanenko.practice1.util.CRC16Util;
+import stepanenko.practice1.util.CipherUtil;
 
 /**
  * @author Liubomyr Stepanenko

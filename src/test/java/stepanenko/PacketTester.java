@@ -1,14 +1,14 @@
-package stepanenko.practice;
+package stepanenko;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import stepanenko.practice.exception.CRC16Exception;
-import stepanenko.practice.exception.MagicByteException;
-import stepanenko.practice.model.Message;
-import stepanenko.practice.model.Packet;
-import stepanenko.practice.processing.Decryptor;
-import stepanenko.practice.processing.Encryptor;
+import stepanenko.practice1.exception.CRC16Exception;
+import stepanenko.practice1.exception.MagicByteException;
+import stepanenko.practice1.model.Message;
+import stepanenko.practice1.model.Packet;
+import stepanenko.practice1.processing.Decryptor;
+import stepanenko.practice1.processing.Encryptor;
 
 /**
  * @author Liubomyr Stepanenko

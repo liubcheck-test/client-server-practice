@@ -1,4 +1,4 @@
-package stepanenko.practice.util;
+package stepanenko.practice1.util;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;

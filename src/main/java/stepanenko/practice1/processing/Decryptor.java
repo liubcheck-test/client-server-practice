@@ -1,6 +1,6 @@
-package stepanenko.practice.processing;
+package stepanenko.practice1.processing;
 
-import stepanenko.practice.model.Packet;
+import stepanenko.practice1.model.Packet;
 
 /**
  * @author Liubomyr Stepanenko

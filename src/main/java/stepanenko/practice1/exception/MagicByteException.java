@@ -1,4 +1,4 @@
-package stepanenko.practice.exception;
+package stepanenko.practice1.exception;
 
 /**
  * @author Liubomyr Stepanenko

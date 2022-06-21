@@ -1,4 +1,4 @@
-package stepanenko.practice.util;
+package stepanenko.practice1.util;
 
 public class CRC16Util {
     public static short crc(byte[] bytes) {

@@ -1,10 +1,10 @@
-package stepanenko.practice.processing;
+package stepanenko.practice1.processing;
 
 import java.nio.ByteBuffer;
-import stepanenko.practice.model.Message;
-import stepanenko.practice.model.Packet;
-import stepanenko.practice.util.CRC16Util;
-import stepanenko.practice.util.CipherUtil;
+import stepanenko.practice1.model.Message;
+import stepanenko.practice1.model.Packet;
+import stepanenko.practice1.util.CRC16Util;
+import stepanenko.practice1.util.CipherUtil;
 
 /**
  * @author Liubomyr Stepanenko
