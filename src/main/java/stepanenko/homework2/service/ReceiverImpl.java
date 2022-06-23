@@ -1,6 +1,5 @@
 package stepanenko.homework2.service;
 
-import java.util.Random;
 import stepanenko.homework2.model.Command;
 import stepanenko.practice1.model.Message;
 import stepanenko.practice1.processing.DecryptorImpl;

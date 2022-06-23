@@ -28,7 +28,7 @@ public class StoreThreadTester {
         startThreads();
         stopThreads();
         int finalProductNumber = getGroupSize(FIRST_GROUP_ID);
-        Assert.assertEquals(initialProductNumber, finalProductNumber);
+        Assert.assertEquals(initialProductNumber + 10, finalProductNumber);
     }
 
     private int getGroupSize(int groupId) {
