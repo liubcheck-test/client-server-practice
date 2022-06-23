@@ -8,8 +8,8 @@ import javax.crypto.spec.SecretKeySpec;
  * @author Liubomyr Stepanenko
  */
 public class KeyUtil {
-    public static final String SECRET_KEY = "&mjlt2ls!sLVas.?";
-    public static final Key key = initKey();
+    private static final String SECRET_KEY = "&mjlt2ls!sLVas.?";
+    private static final Key key = initKey();
 
     public static Key getKey() {
         return key;

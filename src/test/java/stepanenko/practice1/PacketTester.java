@@ -1,4 +1,4 @@
-package stepanenko;
+package stepanenko.practice1;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -7,22 +7,22 @@ import stepanenko.practice1.exception.CRC16Exception;
 import stepanenko.practice1.exception.MagicByteException;
 import stepanenko.practice1.model.Message;
 import stepanenko.practice1.model.Packet;
-import stepanenko.practice1.processing.Decryptor;
-import stepanenko.practice1.processing.Encryptor;
+import stepanenko.practice1.processing.DecryptorImpl;
+import stepanenko.practice1.processing.EncryptorImpl;
 
 /**
  * @author Liubomyr Stepanenko
  */
 public class PacketTester {
-    private static Encryptor packetEncryptor;
-    private static Decryptor packetDecryptor;
+    private static EncryptorImpl packetEncryptor;
+    private static DecryptorImpl packetDecryptor;
     private static Message testMessage;
     private Packet testPacket;
 
     @BeforeClass
     public static void init() {
-        packetEncryptor = new Encryptor();
-        packetDecryptor = new Decryptor();
+        packetEncryptor = new EncryptorImpl();
+        packetDecryptor = new DecryptorImpl();
         testMessage = new Message(3, 11, new byte[] {1, 2, 4, 3, 0, 0, 9});
     }
 

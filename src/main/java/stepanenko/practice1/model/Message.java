@@ -1,5 +1,7 @@
 package stepanenko.practice1.model;
 
+import stepanenko.homework2.model.Command;
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -8,11 +10,23 @@ import java.util.Objects;
  */
 public class Message {
     private int cType;
+    private Command command;
     private int bUserId;
     private byte[] message;
 
+    public Message() {
+    }
+
     public Message(int cType, int bUserId, byte[] message) {
         this.cType = cType;
+        this.command = Command.values()[cType];
+        this.bUserId = bUserId;
+        this.message = message;
+    }
+
+    public Message(Command command, int bUserId, byte[] message) {
+        this.cType = command.ordinal();
+        this.command = command;
         this.bUserId = bUserId;
         this.message = message;
     }
@@ -23,6 +37,14 @@ public class Message {
 
     public void setCType(int cType) {
         this.cType = cType;
+    }
+
+    public Command getCommand() {
+        return command;
+    }
+
+    public void setCommand(Command command) {
+        this.command = command;
     }
 
     public int getUserId() {

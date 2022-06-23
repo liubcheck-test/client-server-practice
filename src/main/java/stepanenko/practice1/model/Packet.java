@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import stepanenko.practice1.exception.CRC16Exception;
 import stepanenko.practice1.exception.MagicByteException;
-import stepanenko.practice1.processing.Encryptor;
+import stepanenko.practice1.processing.EncryptorImpl;
 import stepanenko.practice1.util.CRC16Util;
 import stepanenko.practice1.util.CipherUtil;
 
@@ -67,7 +67,7 @@ public class Packet {
     }
 
     private void checkFooter() {
-        short crc_end = CRC16Util.crc(new Encryptor().encryptMessage(this.bMsg));
+        short crc_end = CRC16Util.crc(new EncryptorImpl().encryptMessage(this.bMsg));
         if (this.wCrc16_end != crc_end) {
             throw new CRC16Exception("Wrong CRC16 end, must be "
                     + crc_end + ", have " + this.wCrc16_end);
