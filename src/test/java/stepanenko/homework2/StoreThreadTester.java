@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StoreThreadTester {
-    private static final int FIRST_GROUP_ID = 1, THREAD_NUMBER = 10;
+    private static final int INITIAL_GROUP_NUMBER = 2, THREAD_NUMBER = 10;
     private static List<Thread> storeThreads;
     private Receiver receiver;
 
@@ -18,21 +18,15 @@ public class StoreThreadTester {
     public static void init() {
         Store.addProductGroup("goods");
         Store.addProductGroup("chemicals");
-        Store.addProductToGroup(FIRST_GROUP_ID, "shirt");
         storeThreads = new ArrayList<>();
     }
 
     @Test
-    public void add_productsToTheGroup_Ok() {
-        int initialProductNumber = getGroupSize(FIRST_GROUP_ID);
+    public void add_productGroups_Ok() {
         startThreads();
         stopThreads();
-        int finalProductNumber = getGroupSize(FIRST_GROUP_ID);
-        Assert.assertEquals(initialProductNumber + THREAD_NUMBER, finalProductNumber);
-    }
-
-    private int getGroupSize(int groupId) {
-        return Store.getGroupsProducts().get(groupId).size();
+        int finalGroupNumber = Store.getGroups().size();
+        Assert.assertEquals(INITIAL_GROUP_NUMBER + THREAD_NUMBER, finalGroupNumber);
     }
 
     private void startThreads() {

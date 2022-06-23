@@ -62,7 +62,7 @@ public class Store {
         productsPrice.put(productId, price);
     }
 
-    public static synchronized Map<Integer, List<String>> getGroupsProducts() {
-        return groupsProducts;
+    public static synchronized Map<Integer, String> getGroups() {
+        return groups;
     }
 }

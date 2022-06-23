@@ -21,7 +21,6 @@ public class DecryptorImpl implements Decryptor {
 
     @Override
     public void decrypt(byte[] message) {
-        Packet packet = decryptPacket(message);
-        ProcessorImpl.getInstance().process(packet.getbMsg());
+        ProcessorImpl.getInstance().process(decryptPacket(message).getbMsg());
     }
 }

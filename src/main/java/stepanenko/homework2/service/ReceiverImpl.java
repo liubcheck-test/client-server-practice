@@ -13,11 +13,11 @@ public class ReceiverImpl implements Receiver {
     @Override
     public void receiveMessage() {
         byte[] messageInBytes = EncryptorImpl.getInstance().encryptPacketBytes(generatedMessage());
-        DecryptorImpl.getInstance().decryptPacket(messageInBytes);
+        DecryptorImpl.getInstance().decrypt(messageInBytes);
     }
 
     private static Message generatedMessage() {
-        int commandNumber = Command.ADD_PRODUCT_TO_GROUP.ordinal();
+        int commandNumber = Command.ADD_PRODUCT_GROUP.ordinal();
         userId++;
         byte[] message = ByteConverter.convertObjectToBytes(new Object[] {String.valueOf(name++)});
         return new Message(commandNumber, userId, message);

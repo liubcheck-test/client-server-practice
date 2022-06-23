@@ -43,6 +43,6 @@ public class ProcessorImpl implements Processor {
                     ByteConverter.convertObjectToBytes("Storage operation "
                             + "can't be processed: " + e.getMessage()));
         }
-        EncryptorImpl.getInstance().encryptPacketBytes(answer);
+        EncryptorImpl.getInstance().encrypt(answer);
     }
 }
