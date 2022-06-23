@@ -4,6 +4,7 @@ import java.util.Random;
 import stepanenko.homework2.model.Command;
 import stepanenko.practice1.model.Message;
 import stepanenko.practice1.processing.DecryptorImpl;
+import stepanenko.practice1.processing.EncryptorImpl;
 import stepanenko.practice1.util.ByteConverter;
 
 public class ReceiverImpl implements Receiver {
@@ -12,7 +13,7 @@ public class ReceiverImpl implements Receiver {
 
     @Override
     public void receiveMessage() {
-        byte[] messageInBytes = new byte[1];
+        byte[] messageInBytes = EncryptorImpl.getInstance().encryptPacketBytes(generatedMessage());
         DecryptorImpl.getInstance().decryptPacket(messageInBytes);
     }
 
