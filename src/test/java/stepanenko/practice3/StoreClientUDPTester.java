@@ -8,6 +8,7 @@ import stepanenko.homework2.model.Store;
 import stepanenko.practice1.model.Message;
 import stepanenko.practice1.util.ByteConverter;
 import stepanenko.practice3.tcp.StoreClientTCP;
+import stepanenko.practice3.udp.StoreClientUDP;
 import stepanenko.practice3.udp.StoreServerUDP;
 
 import java.io.IOException;
@@ -33,9 +34,9 @@ public class StoreClientUDPTester {
                 new Object[]{1, "water"});
         Message message3 = initMessage(Command.ADD_PRODUCT_TO_GROUP, userId++,
                 new Object[]{1, "milk"});
-        StoreClientTCP client1 = new StoreClientTCP(PORT, message1);
-        StoreClientTCP client2 = new StoreClientTCP(PORT, message2);
-        StoreClientTCP client3 = new StoreClientTCP(PORT, message3);
+        StoreClientUDP client1 = new StoreClientUDP(PORT, message1);
+        StoreClientUDP client2 = new StoreClientUDP(PORT, message2);
+        StoreClientUDP client3 = new StoreClientUDP(PORT, message3);
         new Thread(server).start();
         Thread.sleep(100);
         new Thread(client1).start();

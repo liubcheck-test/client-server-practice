@@ -23,7 +23,7 @@ public class ClientUDPHandler implements Runnable{
         Packet packet = DecryptorImpl.getInstance().decryptPacket(datagramPacket.getData());
         Message message = packet.getbMsg();
         Message response = ProcessorImpl.getInstance().processMessage(message);
-        byte[] encryptedResponse = EncryptorImpl.getInstance().encrypt(response);
+        byte[] encryptedResponse = EncryptorImpl.getInstance().encryptPacketBytes(response);
         try {
             datagramSocket = new DatagramSocket();
             DatagramPacket responsePacket = new DatagramPacket(encryptedResponse,

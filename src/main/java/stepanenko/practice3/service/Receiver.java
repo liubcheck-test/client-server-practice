@@ -7,7 +7,7 @@ import java.net.Socket;
 import stepanenko.practice3.exception.ProcessingException;
 
 public class Receiver {
-    private static final int ATTEMPTS_NUMBER = 20;
+    private static final int ATTEMPTS_NUMBER = 50;
     private final Socket socket;
     private final InputStream inputStream;
     private final OutputStream outputStream;
@@ -31,14 +31,19 @@ public class Receiver {
                     if (++timeForWaiting > ATTEMPTS_NUMBER) {
                         return messageInBytes;
                     }
-                    Thread.sleep(100);
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     continue;
                 }
                 byte[] additionalBytes = inputStream.readNBytes(inputStream.available());
                 messageInBytes = bytesConcatenation(messageInBytes, additionalBytes);
+                timeForWaiting = 0;
                 return messageInBytes;
             }
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             throw new ProcessingException("Can't receive the message correctly", e);
         }
     }
@@ -63,7 +68,7 @@ public class Receiver {
 
     private byte[] bytesConcatenation(byte[] bytes, byte[] additionalBytes) {
         byte[] result = new byte[bytes.length + additionalBytes.length];
-        System.arraycopy(bytes, 0, result, 0, additionalBytes.length);
+        System.arraycopy(bytes, 0, result, 0, bytes.length);
         System.arraycopy(additionalBytes, 0, result, bytes.length, additionalBytes.length);
         return result;
     }

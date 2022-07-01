@@ -17,7 +17,7 @@ public class StoreClientTCP implements Runnable {
     private Socket socket;
     private final Message message;
     private static final String LOCAL_HOST = "localhost";
-    private static final int CONNECTION_TIMEOUT = 400, MAX_CONNECTION_ATTEMPTS = 5;
+    private static final int CONNECTION_TIMEOUT = 400, MAX_CONNECTION_ATTEMPTS = 3;
 
     public StoreClientTCP(int port, Message message) {
         this.port = port;
@@ -29,7 +29,7 @@ public class StoreClientTCP implements Runnable {
         try {
             connectClient();
             Receiver receiver = new Receiver(socket);
-            receiver.sendMessage(EncryptorImpl.getInstance().encryptMessage(message));
+            receiver.sendMessage(EncryptorImpl.getInstance().encryptPacketBytes(message));
             byte[] responseBytes = receiver.receiveMessage();
             Packet packet = DecryptorImpl.getInstance().decryptPacket(responseBytes);
             System.out.println("Server response: " + packet.getbMsg());
@@ -50,7 +50,7 @@ public class StoreClientTCP implements Runnable {
                 }
                 try {
                     Thread.sleep(CONNECTION_TIMEOUT +
-                            (long) CONNECTION_TIMEOUT * connectionAttempts);
+                            CONNECTION_TIMEOUT * connectionAttempts);
                 } catch (InterruptedException ex) {
                     throw new ProcessingException("Thread sleep invalidation", e);
                 }

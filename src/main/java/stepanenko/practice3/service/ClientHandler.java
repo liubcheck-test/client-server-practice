@@ -20,6 +20,6 @@ public class ClientHandler implements Runnable {
         byte[] bytes = receiver.receiveMessage();
         Packet packet = DecryptorImpl.getInstance().decryptPacket(bytes);
         Message response = ProcessorImpl.getInstance().processMessage(packet.getbMsg());
-        receiver.sendMessage(EncryptorImpl.getInstance().encrypt(response));
+        receiver.sendMessage(EncryptorImpl.getInstance().encryptPacketBytes(response));
     }
 }

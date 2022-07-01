@@ -13,7 +13,6 @@ import stepanenko.practice1.processing.EncryptorImpl;
 import stepanenko.practice3.exception.ProcessingException;
 
 public class StoreClientUDP implements Runnable {
-    private static int userId = 100;
     private final int port;
     private final Message message;
     private final DatagramSocket datagramSocket;
@@ -33,8 +32,8 @@ public class StoreClientUDP implements Runnable {
     public void run() {
         boolean packetIsProcessed = false;
         do {
-            message.setbUserId(userId++);
-            byte[] messageInBytes = EncryptorImpl.getInstance().encryptMessage(message);
+            int userId = message.getUserId();
+            byte[] messageInBytes = EncryptorImpl.getInstance().encryptPacketBytes(message);
             DatagramPacket datagramPacket = new DatagramPacket(messageInBytes,
                     messageInBytes.length, inetAddress, port);
             try {
