@@ -45,4 +45,38 @@ public class ProcessorImpl implements Processor {
         }
         EncryptorImpl.getInstance().encrypt(answer);
     }
+
+    @Override
+    public Message processMessage(Message message) {
+        if (message == null) {
+            throw new RuntimeException("Message is null");
+        }
+        Message answer;
+        try {
+            Object[] messageContent =
+                    (Object[]) ByteConverter.convertBytesToObject(message.getMessage());
+            switch (message.getCommand()) {
+                case SHOW_PRODUCT_AMOUNT -> Store.getProductAmount((int) messageContent[0]);
+                case SET_PRODUCT_AMOUNT -> Store.updateProductAmount((int) messageContent[0],
+                        (int) messageContent[1]);
+                case ADD_PRODUCT_GROUP -> Store.addProductGroup((String) messageContent[0]);
+                case ADD_PRODUCT_TO_GROUP -> Store.addProductToGroup((int) messageContent[0],
+                        (String) messageContent[1]);
+                case SET_PRODUCT_PRICE -> Store.setProductPrice((int) messageContent[0],
+                        (int) messageContent[1]);
+                default -> answer = new Message(Command.ERROR, message.getUserId(),
+                        ByteConverter.convertObjectToBytes("Invalid command number was chosen"));
+            }
+            answer = new Message(Command.OK, message.getUserId(),
+                    ByteConverter.convertObjectToBytes("OK"));
+        } catch (ClassCastException e) {
+            answer = new Message(Command.ERROR, message.getUserId(),
+                    ByteConverter.convertObjectToBytes("Invalid input parameters were set"));
+        } catch (StoreException e) {
+            answer = new Message(Command.ERROR, message.getUserId(),
+                    ByteConverter.convertObjectToBytes("Storage operation "
+                            + "can't be processed: " + e.getMessage()));
+        }
+        return answer;
+    }
 }

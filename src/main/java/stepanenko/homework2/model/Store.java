@@ -65,4 +65,8 @@ public class Store {
     public static synchronized Map<Integer, String> getGroups() {
         return groups;
     }
+
+    public static synchronized Map<Integer, String> getProducts() {
+        return products;
+    }
 }
