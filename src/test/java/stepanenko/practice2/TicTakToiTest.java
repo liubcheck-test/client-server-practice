@@ -1,8 +1,8 @@
 package stepanenko.practice2;
 
-import org.junit.Test;
-import java.io.*;
-import static org.junit.Assert.assertEquals;
+import java.io.ByteArrayOutputStream;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Oleh Klepatskyi
@@ -20,6 +20,6 @@ public class TicTakToiTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new java.io.PrintStream(out));
         Main.main(null);
-        assertEquals(expected, out.toString());
+        Assertions.assertEquals(expected, out.toString());
     }
 }

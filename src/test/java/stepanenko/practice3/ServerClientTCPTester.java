@@ -1,21 +1,15 @@
 package stepanenko.practice3;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import stepanenko.homework2.model.Command;
 import stepanenko.homework2.model.Store;
 import stepanenko.practice1.model.Message;
 import stepanenko.practice1.util.ByteConverter;
 import stepanenko.practice3.tcp.StoreClientTCP;
 import stepanenko.practice3.tcp.StoreServerTCP;
-import stepanenko.practice3.udp.StoreClientUDP;
 
 public class ServerClientTCPTester {
     private static StoreServerTCP server;
@@ -23,7 +17,7 @@ public class ServerClientTCPTester {
     private static final int MAX_THREAD_NUMBER = 3;
     private static int userId = 100;
 
-    @BeforeClass
+    @BeforeAll
     public static void init() {
         Store.addProductGroup("goods");
         Store.addProductGroup("chemicals");
@@ -48,7 +42,7 @@ public class ServerClientTCPTester {
         new Thread(client3).start();
         Thread.sleep(800);
         server.stop();
-        Assert.assertEquals(3, Store.getProducts().size());
+        Assertions.assertEquals(3, Store.getProducts().size());
     }
 
     private Message initMessage(Command command, int userId, Object[] values) {

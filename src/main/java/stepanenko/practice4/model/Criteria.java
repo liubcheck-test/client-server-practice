@@ -1,0 +1,10 @@
+package stepanenko.practice4.model;
+
+public enum Criteria {
+    AMOUNT_DIAPASON,
+    PRICE_DIAPASON,
+    LESS_THAN_PARTICULAR_AMOUNT,
+    MORE_THAN_PARTICULAR_AMOUNT,
+    LESS_THAN_PARTICULAR_PRICE,
+    MORE_THAN_PARTICULAR_PRICE
+}
